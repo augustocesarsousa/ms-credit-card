@@ -3,6 +3,7 @@ package com.acsousa.creditcard.msclients.application;
 import java.net.URI;
 import java.util.Optional;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,12 +21,14 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("clients")
 @RequiredArgsConstructor
+@Slf4j
 public class ClientController {
 
   private final ClientService service;
 
   @GetMapping
   public String status() {
+    log.info("Getting msclient service info");
     return "I'm fine!";
   }
 
