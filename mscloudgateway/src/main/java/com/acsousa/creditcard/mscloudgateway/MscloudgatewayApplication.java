@@ -13,17 +13,16 @@ import org.springframework.context.annotation.Bean;
 @EnableDiscoveryClient
 public class MscloudgatewayApplication {
 
-	public static void main(String[] args) {
+  public static void main(String[] args) {
+    SpringApplication.run(MscloudgatewayApplication.class, args);
+  }
 
-		SpringApplication.run(MscloudgatewayApplication.class, args);
-	}
-
-	@Bean
-	public RouteLocator routes(RouteLocatorBuilder builder){
-		return builder
-				.routes()
-				.route(r -> r.path("/clients/**").uri("lb://msclients"))
-				.build();
-	}
-
+  @Bean
+  public RouteLocator routes(RouteLocatorBuilder builder) {
+    return builder
+      .routes()
+      .route(r -> r.path("/clients/**").uri("lb://msclients"))
+      .route(r -> r.path("/cards/**").uri("lb://mscards"))
+      .build();
+  }
 }
