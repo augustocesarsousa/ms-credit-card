@@ -21,7 +21,7 @@ public class CardByClientDTO {
     return new CardByClientDTO(
       model.getCard().getName(),
       model.getCard().getFlag().toString(),
-      model.getLimit()
+      model.getLimitReleased()
     );
   }
 }

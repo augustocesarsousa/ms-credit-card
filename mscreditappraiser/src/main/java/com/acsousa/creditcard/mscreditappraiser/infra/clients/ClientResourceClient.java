@@ -1,4 +1,4 @@
-package com.acsousa.creditcard.mscreditappraiser.infra.client;
+package com.acsousa.creditcard.mscreditappraiser.infra.clients;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;

@@ -8,5 +8,5 @@ import lombok.Data;
 public class ClientCard {
     private String name;
     private String flag;
-    private BigDecimal limit;
+    private BigDecimal limitReleased;
 }

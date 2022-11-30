@@ -13,19 +13,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 public class ClientCard {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
-  private String cpf;
-
-  @ManyToOne
-  @JoinColumn(name = "id_card")
-  private Card card;
-
-  private BigDecimal limit;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+  
+    private String cpf;
+  
+    @ManyToOne
+    @JoinColumn(name = "id_card")
+    private Card card;
+  
+    private BigDecimal limitReleased;
 }
