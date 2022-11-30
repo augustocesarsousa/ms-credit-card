@@ -40,17 +40,13 @@ public class CardController {
   }
 
   @GetMapping(params = "income")
-  public ResponseEntity<List<Card>> getCardsIncomeLessThanEqual(
-    @RequestParam("income") Long income
-  ) {
+  public ResponseEntity<List<Card>> getCardsIncomeLessThanEqual(@RequestParam("income") Long income) {
     List<Card> list = cardService.getCardsIncomeLessThanEqual(income);
     return ResponseEntity.ok(list);
   }
 
   @GetMapping(params = "cpf")
-  public ResponseEntity<List<CardByClientDTO>> getCardByClient(
-    @RequestParam("cpf") String cpf
-  ) {
+  public ResponseEntity<List<CardByClientDTO>> getCardByClient(@RequestParam("cpf") String cpf) {
     List<ClientCard> list = clientCardService.getCardsByCpf(cpf);
     List<CardByClientDTO> cardsByCpf = list
       .stream()

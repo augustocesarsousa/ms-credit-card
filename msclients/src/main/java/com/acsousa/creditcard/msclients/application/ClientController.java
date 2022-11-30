@@ -3,7 +3,6 @@ package com.acsousa.creditcard.msclients.application;
 import java.net.URI;
 import java.util.Optional;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +16,7 @@ import com.acsousa.creditcard.msclients.application.representation.ClientSaveDTO
 import com.acsousa.creditcard.msclients.domain.Client;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("clients")
@@ -45,9 +45,7 @@ public class ClientController {
   }
 
   @GetMapping(params = "cpf")
-  public ResponseEntity<Optional<Client>> getClientByCpf(
-    @RequestParam("cpf") String cpf
-  ) {
+  public ResponseEntity<Optional<Client>> getClientByCpf(@RequestParam("cpf") String cpf) {
     var client = service.getByCPF(cpf);
     if (client.isEmpty()) return ResponseEntity.notFound().build();
     return ResponseEntity.ok().body(client);
