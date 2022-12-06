@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.acsousa.creditcard.mscreditappraiser.application.exception.ClientDataNotFoundException;
 import com.acsousa.creditcard.mscreditappraiser.application.exception.MicroserviceCommunicationException;
+import com.acsousa.creditcard.mscreditappraiser.application.exception.RequestIssuanceCardException;
 import com.acsousa.creditcard.mscreditappraiser.domain.models.AppraisalData;
 import com.acsousa.creditcard.mscreditappraiser.domain.models.ClientSituation;
+import com.acsousa.creditcard.mscreditappraiser.domain.models.IssuanceCardData;
+import com.acsousa.creditcard.mscreditappraiser.domain.models.IssuanceCardProtocol;
 import com.acsousa.creditcard.mscreditappraiser.domain.models.ReturnApprovedCards;
 
 import lombok.RequiredArgsConstructor;
@@ -50,6 +53,17 @@ public class CreditAppraiserController {
       return ResponseEntity.notFound().build();
     } catch (MicroserviceCommunicationException e) {
       return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
+    }
+  }
+
+  @PostMapping("request-card")
+  public ResponseEntity requestIssuanceCard(@RequestBody IssuanceCardData data){
+    System.out.println(data);
+    try {
+      IssuanceCardProtocol protocol = creditAppraiserService.requestIssuanceCard(data);
+      return ResponseEntity.ok(protocol);
+    } catch (RequestIssuanceCardException e) {
+      return ResponseEntity.internalServerError().body(e.getMessage());
     }
   }
 }
