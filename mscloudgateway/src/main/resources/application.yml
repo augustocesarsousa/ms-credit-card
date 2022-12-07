@@ -5,15 +5,20 @@ spring:
     gateway:
       discovery:
         locator:
-          enable: true
+          enabled: true
           lower-case-service-id: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/mscreditcardrealm
 
 server:
   port: 8080
 
 eureka:
   client:
-    fetch-register: true
+    fetch-registry: true
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka

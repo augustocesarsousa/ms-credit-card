@@ -58,7 +58,6 @@ public class CreditAppraiserController {
 
   @PostMapping("request-card")
   public ResponseEntity requestIssuanceCard(@RequestBody IssuanceCardData data){
-    System.out.println(data);
     try {
       IssuanceCardProtocol protocol = creditAppraiserService.requestIssuanceCard(data);
       return ResponseEntity.ok(protocol);
