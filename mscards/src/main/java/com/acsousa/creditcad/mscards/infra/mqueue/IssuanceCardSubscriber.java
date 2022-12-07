@@ -12,9 +12,11 @@ import com.acsousa.creditcad.mscards.infra.repository.ClientCardRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class IssuanceCardSubscriber {
 
     private final CardRepository cardRepository;
@@ -37,7 +39,7 @@ public class IssuanceCardSubscriber {
             
             clientRepository.save(client);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error receiving card request: {} ", e.getMessage());
         }
     }
 }
