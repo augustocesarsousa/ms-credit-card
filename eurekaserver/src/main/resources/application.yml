@@ -1,6 +1,12 @@
 spring:
   application:
     name: eurekaserver
+  security:
+    basic:
+      enable: true
+    user:
+      name: ms-credit-card-user
+      password: eyJhbGciOiJSUzI1NiIsInR5cCIg
 
 server:
   port: 8761
