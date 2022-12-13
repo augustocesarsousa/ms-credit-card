@@ -11,4 +11,4 @@ ARG MSCREDITCARD_EUREKA_SERVER=localhost
 ARG MSCREDITCARD_KEYCLOAK_SERVER=localhost
 ARG MSCREDITCARD_KEYCLOAK_PORT=8081
 
-ENTRYPOINT java -jar app.jar
+ENTRYPOINT java -jar -Dspring.profiles.active=production app.jar

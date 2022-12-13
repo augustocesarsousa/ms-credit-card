@@ -11,7 +11,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8081/realms/mscreditcardrealm
+          issuer-uri: http://${MSCREDITCARD_KEYCLOAK_SERVER}:${MSCREDITCARD_KEYCLOAK_PORT}/realms/mscreditcardrealm
 
 server:
   port: 8080
@@ -21,4 +21,4 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://ms-credit-card-user:eyJhbGciOiJSUzI1NiIsInR5cCIg@localhost:8761/eureka
+      defaultZone: http://ms-credit-card-user:eyJhbGciOiJSUzI1NiIsInR5cCIg@${MSCREDITCARD_EUREKA_SERVER}:8761/eureka

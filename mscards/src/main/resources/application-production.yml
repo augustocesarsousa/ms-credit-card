@@ -1,6 +1,11 @@
 spring:
   application:
-    name: msclients
+    name: mscards
+  rabbitmq:
+    host: ${MSCREDITCARD_RABBITMQ_SERVER}
+    port: 5672
+    username: guest
+    password: guest
 
 server:
   port: 0
@@ -8,9 +13,13 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://ms-credit-card-user:eyJhbGciOiJSUzI1NiIsInR5cCIg@$localhost:8761/eureka
+      defaultZone: http://ms-credit-card-user:eyJhbGciOiJSUzI1NiIsInR5cCIg@${MSCREDITCARD_EUREKA_SERVER}:8761/eureka
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+mq:
+  queues:
+    issuance-cards: issuance-cards
 
 management:
   endpoints:
